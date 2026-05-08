@@ -54,6 +54,8 @@ apis:
         type: Documentation
       - url: https://www.flowable.com/open-source/docs/
         type: DocumentationPortal
+      - url: openapi/flowable-api-openapi.yml
+        type: OpenAPI
   - aid: flowable-api:rest-api
     name: Flowable REST API
     description: >-
