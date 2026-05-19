@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Flowable REST API — Tasks
+  description: 'Flowable REST API — Tasks. 3 operations. Lead operation: List tasks. Self-contained Naftiko capability covering
+    one Flowable Api business surface.'
+  tags:
+  - Flowable Api
+  - Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLOWABLE_API_API_KEY: FLOWABLE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flowable-tasks
+    baseUri: https://flowable.example.com/flowable-rest/service
+    description: Flowable REST API — Tasks business capability. Self-contained, no shared references.
+    resources:
+    - name: runtime-tasks
+      path: /runtime/tasks
+      operations:
+      - name: listtasks
+        method: GET
+        description: List tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: runtime-tasks-taskId
+      path: /runtime/tasks/{taskId}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: taskaction
+        method: POST
+        description: Perform a task action (claim, complete, delegate, resolve)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: flowable-tasks-rest
+    port: 8080
+    description: REST adapter for Flowable REST API — Tasks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/runtime/tasks
+      name: runtime-tasks
+      description: REST surface for runtime-tasks.
+      operations:
+      - method: GET
+        name: listtasks
+        description: List tasks
+        call: flowable-tasks.listtasks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/runtime/tasks/{taskid}
+      name: runtime-tasks-taskid
+      description: REST surface for runtime-tasks-taskId.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get a task
+        call: flowable-tasks.gettask
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: taskaction
+        description: Perform a task action (claim, complete, delegate, resolve)
+        call: flowable-tasks.taskaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flowable-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Flowable REST API — Tasks. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-tasks
+      description: List tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-tasks.listtasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-task
+      description: Get a task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-tasks.gettask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: perform-task-action-claim-complete
+      description: Perform a task action (claim, complete, delegate, resolve)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flowable-tasks.taskaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

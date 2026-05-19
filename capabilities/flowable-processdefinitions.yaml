@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Flowable REST API — ProcessDefinitions
+  description: 'Flowable REST API — ProcessDefinitions. 3 operations. Lead operation: List process definitions. Self-contained
+    Naftiko capability covering one Flowable Api business surface.'
+  tags:
+  - Flowable Api
+  - ProcessDefinitions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLOWABLE_API_API_KEY: FLOWABLE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flowable-processdefinitions
+    baseUri: https://flowable.example.com/flowable-rest/service
+    description: Flowable REST API — ProcessDefinitions business capability. Self-contained, no shared references.
+    resources:
+    - name: repository-process-definitions
+      path: /repository/process-definitions
+      operations:
+      - name: listprocessdefinitions
+        method: GET
+        description: List process definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: repository-process-definitions-processDefinitionId
+      path: /repository/process-definitions/{processDefinitionId}
+      operations:
+      - name: getprocessdefinition
+        method: GET
+        description: Get a process definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateprocessdefinition
+        method: PUT
+        description: Update process definition (e.g. category, suspend/activate)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: flowable-processdefinitions-rest
+    port: 8080
+    description: REST adapter for Flowable REST API — ProcessDefinitions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/repository/process-definitions
+      name: repository-process-definitions
+      description: REST surface for repository-process-definitions.
+      operations:
+      - method: GET
+        name: listprocessdefinitions
+        description: List process definitions
+        call: flowable-processdefinitions.listprocessdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/repository/process-definitions/{processdefinitionid}
+      name: repository-process-definitions-processdefinitionid
+      description: REST surface for repository-process-definitions-processDefinitionId.
+      operations:
+      - method: GET
+        name: getprocessdefinition
+        description: Get a process definition
+        call: flowable-processdefinitions.getprocessdefinition
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateprocessdefinition
+        description: Update process definition (e.g. category, suspend/activate)
+        call: flowable-processdefinitions.updateprocessdefinition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flowable-processdefinitions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Flowable REST API — ProcessDefinitions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-process-definitions
+      description: List process definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-processdefinitions.listprocessdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-process-definition
+      description: Get a process definition
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-processdefinitions.getprocessdefinition
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-process-definition-e-g-category
+      description: Update process definition (e.g. category, suspend/activate)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: flowable-processdefinitions.updateprocessdefinition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

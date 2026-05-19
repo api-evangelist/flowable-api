@@ -1,0 +1,200 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Flowable REST API — Deployments
+  description: 'Flowable REST API — Deployments. 5 operations. Lead operation: List deployments. Self-contained Naftiko capability
+    covering one Flowable Api business surface.'
+  tags:
+  - Flowable Api
+  - Deployments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLOWABLE_API_API_KEY: FLOWABLE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flowable-deployments
+    baseUri: https://flowable.example.com/flowable-rest/service
+    description: Flowable REST API — Deployments business capability. Self-contained, no shared references.
+    resources:
+    - name: repository-deployments
+      path: /repository/deployments
+      operations:
+      - name: listdeployments
+        method: GET
+        description: List deployments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdeployment
+        method: POST
+        description: Create a deployment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: repository-deployments-deploymentId
+      path: /repository/deployments/{deploymentId}
+      operations:
+      - name: getdeployment
+        method: GET
+        description: Get a deployment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedeployment
+        method: DELETE
+        description: Delete a deployment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: repository-deployments-deploymentId-resources
+      path: /repository/deployments/{deploymentId}/resources
+      operations:
+      - name: listdeploymentresources
+        method: GET
+        description: List deployment resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deploymentId
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: flowable-deployments-rest
+    port: 8080
+    description: REST adapter for Flowable REST API — Deployments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/repository/deployments
+      name: repository-deployments
+      description: REST surface for repository-deployments.
+      operations:
+      - method: GET
+        name: listdeployments
+        description: List deployments
+        call: flowable-deployments.listdeployments
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdeployment
+        description: Create a deployment
+        call: flowable-deployments.createdeployment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/repository/deployments/{deploymentid}
+      name: repository-deployments-deploymentid
+      description: REST surface for repository-deployments-deploymentId.
+      operations:
+      - method: GET
+        name: getdeployment
+        description: Get a deployment
+        call: flowable-deployments.getdeployment
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedeployment
+        description: Delete a deployment
+        call: flowable-deployments.deletedeployment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/repository/deployments/{deploymentid}/resources
+      name: repository-deployments-deploymentid-resources
+      description: REST surface for repository-deployments-deploymentId-resources.
+      operations:
+      - method: GET
+        name: listdeploymentresources
+        description: List deployment resources
+        call: flowable-deployments.listdeploymentresources
+        with:
+          deploymentId: rest.deploymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flowable-deployments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Flowable REST API — Deployments. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-deployments
+      description: List deployments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-deployments.listdeployments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-deployment
+      description: Create a deployment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flowable-deployments.createdeployment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-deployment
+      description: Get a deployment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-deployments.getdeployment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-deployment
+      description: Delete a deployment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: flowable-deployments.deletedeployment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-deployment-resources
+      description: List deployment resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flowable-deployments.listdeploymentresources
+      with:
+        deploymentId: tools.deploymentId
+      outputParameters:
+      - type: object
+        mapping: $.
