@@ -1,0 +1,362 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/deployments"
+          },
+          "docs": "List deployments"
+        },
+        {
+          "info": {
+            "name": "Create a deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/deployments",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create a deployment"
+        },
+        {
+          "info": {
+            "name": "Get a deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/deployments/:deploymentId",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a deployment"
+        },
+        {
+          "info": {
+            "name": "Delete a deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/deployments/:deploymentId",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a deployment"
+        },
+        {
+          "info": {
+            "name": "List deployment resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/deployments/:deploymentId/resources",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List deployment resources"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProcessDefinitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List process definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/process-definitions"
+          },
+          "docs": "List process definitions"
+        },
+        {
+          "info": {
+            "name": "Get a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/process-definitions/:processDefinitionId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a process definition"
+        },
+        {
+          "info": {
+            "name": "Update process definition (e.g. category, suspend/activate)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/process-definitions/:processDefinitionId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update process definition (e.g. category, suspend/activate)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/models"
+          },
+          "docs": "List models"
+        },
+        {
+          "info": {
+            "name": "Create a model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/repository/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a model"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProcessInstances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/process-instances"
+          },
+          "docs": "List process instances"
+        },
+        {
+          "info": {
+            "name": "Start a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/process-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a process instance"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/tasks"
+          },
+          "docs": "List tasks"
+        },
+        {
+          "info": {
+            "name": "Get a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a task"
+        },
+        {
+          "info": {
+            "name": "Perform a task action (claim, complete, delegate, resolve)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Perform a task action (claim, complete, delegate, resolve)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CMMN",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List CMMN case instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances"
+          },
+          "docs": "List CMMN case instances"
+        },
+        {
+          "info": {
+            "name": "Start a CMMN case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a CMMN case instance"
+        },
+        {
+          "info": {
+            "name": "Delete a CMMN case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances/:caseInstanceId",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a CMMN case instance"
+        },
+        {
+          "info": {
+            "name": "List DMN decision tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/dmn-repository/decision-tables"
+          },
+          "docs": "List DMN decision tables"
+        },
+        {
+          "info": {
+            "name": "Execute a DMN decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/dmn-rule/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a DMN decision"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
