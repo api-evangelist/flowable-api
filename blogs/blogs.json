@@ -2,17 +2,13 @@
   "repo": "flowable-api",
   "feeds": [
     {
-      "source": "https://www.flowable.com/blog/",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://github.com/flowable",
-      "feed_url": "https://github.com/flowable",
-      "title": "",
+      "source": "https://blog.flowable.org/",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 3,
+  "fetched": "2026-06-27T12:41:34Z",
+  "agent_pulled": "2026-06-27"
 }
