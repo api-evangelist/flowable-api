@@ -66,6 +66,10 @@ apis:
       - url: https://github.com/flowable/flowable-engine
         type: GitHubRepository
 common:
+  - type: TrustCenter
+    url: security/flowable-api-trust-center.yml
+  - type: DomainSecurity
+    url: security/flowable-api-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/flowable-group
   - type: Website
