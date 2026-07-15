@@ -66,6 +66,8 @@ apis:
       - url: https://github.com/flowable/flowable-engine
         type: GitHubRepository
 common:
+  - type: AgenticAccess
+    url: agentic-access/flowable-api-agentic-access.yml
   - type: TrustCenter
     url: security/flowable-api-trust-center.yml
   - type: DomainSecurity
