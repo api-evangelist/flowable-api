@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Flowable REST CMMN ProcessDefinitions API
+  version: 1.0.0
+  description: Minimal OpenAPI description of the Flowable REST API, which exposes the Flowable Process Engine over HTTP for managing BPMN deployments, process definitions, process instances, tasks, and CMMN cases.
+  x-generated-from: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://flowable.example.com/flowable-rest/service
+  description: Default Flowable REST service base
+tags:
+- name: ProcessDefinitions
+paths:
+  /repository/process-definitions:
+    get:
+      tags:
+      - ProcessDefinitions
+      summary: List process definitions
+      operationId: listProcessDefinitions
+      responses:
+        '200':
+          description: Process definitions
+          content:
+            application/json:
+              schema:
+                type: object
+  /repository/process-definitions/{processDefinitionId}:
+    parameters:
+    - in: path
+      name: processDefinitionId
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - ProcessDefinitions
+      summary: Get a process definition
+      operationId: getProcessDefinition
+      responses:
+        '200':
+          description: Process definition
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      tags:
+      - ProcessDefinitions
+      summary: Update process definition (e.g. category, suspend/activate)
+      operationId: updateProcessDefinition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object

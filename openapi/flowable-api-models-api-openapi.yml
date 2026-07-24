@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: Flowable REST CMMN Models API
+  version: 1.0.0
+  description: Minimal OpenAPI description of the Flowable REST API, which exposes the Flowable Process Engine over HTTP for managing BPMN deployments, process definitions, process instances, tasks, and CMMN cases.
+  x-generated-from: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://flowable.example.com/flowable-rest/service
+  description: Default Flowable REST service base
+tags:
+- name: Models
+paths:
+  /repository/models:
+    get:
+      tags:
+      - Models
+      summary: List models
+      operationId: listModels
+      responses:
+        '200':
+          description: Models
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Models
+      summary: Create a model
+      operationId: createModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object

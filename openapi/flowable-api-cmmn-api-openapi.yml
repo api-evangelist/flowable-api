@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Flowable REST CMMN API
+  version: 1.0.0
+  description: Minimal OpenAPI description of the Flowable REST API, which exposes the Flowable Process Engine over HTTP for managing BPMN deployments, process definitions, process instances, tasks, and CMMN cases.
+  x-generated-from: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://flowable.example.com/flowable-rest/service
+  description: Default Flowable REST service base
+tags:
+- name: CMMN
+paths:
+  /cmmn-runtime/case-instances:
+    get:
+      tags:
+      - CMMN
+      summary: List CMMN case instances
+      operationId: listCaseInstances
+      responses:
+        '200':
+          description: Case instances
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - CMMN
+      summary: Start a CMMN case instance
+      operationId: startCaseInstance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Started
+          content:
+            application/json:
+              schema:
+                type: object
+  /cmmn-runtime/case-instances/{caseInstanceId}:
+    delete:
+      tags:
+      - CMMN
+      summary: Delete a CMMN case instance
+      operationId: deleteCaseInstance
+      parameters:
+      - in: path
+        name: caseInstanceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Deleted
+  /dmn-repository/decision-tables:
+    get:
+      tags:
+      - CMMN
+      summary: List DMN decision tables
+      operationId: listDecisionTables
+      responses:
+        '200':
+          description: Decision tables
+          content:
+            application/json:
+              schema:
+                type: object
+  /dmn-rule/execute:
+    post:
+      tags:
+      - CMMN
+      summary: Execute a DMN decision
+      operationId: executeDecision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Decision result
+          content:
+            application/json:
+              schema:
+                type: object

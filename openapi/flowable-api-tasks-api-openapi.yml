@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Flowable REST CMMN Tasks API
+  version: 1.0.0
+  description: Minimal OpenAPI description of the Flowable REST API, which exposes the Flowable Process Engine over HTTP for managing BPMN deployments, process definitions, process instances, tasks, and CMMN cases.
+  x-generated-from: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://flowable.example.com/flowable-rest/service
+  description: Default Flowable REST service base
+tags:
+- name: Tasks
+paths:
+  /runtime/tasks:
+    get:
+      tags:
+      - Tasks
+      summary: List tasks
+      operationId: listTasks
+      responses:
+        '200':
+          description: Tasks
+          content:
+            application/json:
+              schema:
+                type: object
+  /runtime/tasks/{taskId}:
+    parameters:
+    - in: path
+      name: taskId
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Tasks
+      summary: Get a task
+      operationId: getTask
+      responses:
+        '200':
+          description: Task
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Tasks
+      summary: Perform a task action (claim, complete, delegate, resolve)
+      operationId: taskAction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Action performed
