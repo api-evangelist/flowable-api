@@ -7,7 +7,19 @@ description: >-
   exposes RepositoryService, RuntimeService, TaskService, IdentityService, HistoryService, ManagementService,
   FormService, and DynamicBpmnService for managing process definitions, instances, tasks, history, and runtime behavior.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/flowable-api.png
 access: 3rd-Party
 created: '2024-11-07'
 modified: '2026-05-19'
@@ -23,48 +35,108 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/flowable-api/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: flowable-api:process-engine-api
-    name: Flowable Process Engine API
-    description: >-
-      The Flowable Process Engine API is the primary programmatic interface for interacting with Flowable. From a
-      configured ProcessEngine, applications obtain a set of services that cover the full BPM lifecycle:
-      RepositoryService for deploying and managing process definitions, RuntimeService for starting and signaling
-      process instances, TaskService for human task assignment and completion, IdentityService for users and groups,
-      HistoryService for audit and reporting queries, ManagementService for jobs and engine metadata, FormService for
-      start and task forms, and DynamicBpmnService for runtime modifications. The API supports both fluent typesafe
-      queries and native SQL queries.
-    humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
-    baseURL: https://www.flowable.com/open-source/docs/bpmn/
-    tags:
-      - BPM
-      - BPMN
-      - Process Engine
-      - Workflows
-    properties:
-      - url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
-        type: Documentation
-      - url: https://www.flowable.com/open-source/docs/
-        type: DocumentationPortal
-      - url: openapi/flowable-api-openapi.yml
-        type: OpenAPI
-  - aid: flowable-api:rest-api
-    name: Flowable REST API
-    description: >-
-      Flowable also ships a packaged REST API webapp that exposes the Process Engine services over HTTP. The REST API
-      covers process definitions and deployments, process instances and variables, user tasks and forms, history,
-      identity, and engine management, allowing non-Java clients to drive BPMN, CMMN, and DMN processes from any
-      platform.
-    humanURL: https://www.flowable.com/open-source/docs/bpmn/
-    baseURL: https://www.flowable.com/open-source/docs/bpmn/
-    tags:
-      - BPM
-      - REST
-      - Workflows
-    properties:
-      - url: https://www.flowable.com/open-source/docs/
-        type: Documentation
-      - url: https://github.com/flowable/flowable-engine
-        type: GitHubRepository
+- aid: flowable-api:rest-api
+  name: Flowable REST API
+  description: >-
+    Flowable also ships a packaged REST API webapp that exposes the Process Engine services over HTTP.
+    The REST API covers process definitions and deployments, process instances and variables, user tasks
+    and forms, history, identity, and engine management, allowing non-Java clients to drive BPMN, CMMN,
+    and DMN processes from any platform.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - BPM
+  - REST
+  - Workflows
+  properties:
+  - url: https://www.flowable.com/open-source/docs/
+    type: Documentation
+  - url: https://github.com/flowable/flowable-engine
+    type: GitHubRepository
+- aid: flowable-api:flowable-api-cmmn-api
+  name: Flowable CMMN API
+  description: The CMMN API from Flowable — 4 operation(s) for cmmn.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - CMMN
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-cmmn-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
+- aid: flowable-api:flowable-api-deployments-api
+  name: Flowable Deployments API
+  description: The Deployments API from Flowable — 3 operation(s) for deployments.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
+- aid: flowable-api:flowable-api-models-api
+  name: Flowable Models API
+  description: The Models API from Flowable — 1 operation(s) for models.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-models-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
+- aid: flowable-api:flowable-api-processdefinitions-api
+  name: Flowable ProcessDefinitions API
+  description: The ProcessDefinitions API from Flowable — 2 operation(s) for processdefinitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - ProcessDefinitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-processdefinitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
+- aid: flowable-api:flowable-api-processinstances-api
+  name: Flowable ProcessInstances API
+  description: The ProcessInstances API from Flowable — 1 operation(s) for processinstances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - ProcessInstances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-processinstances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
+- aid: flowable-api:flowable-api-tasks-api
+  name: Flowable Tasks API
+  description: The Tasks API from Flowable — 2 operation(s) for tasks.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  baseURL: https://www.flowable.com/open-source/docs/bpmn/
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-api-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch04-API
+  - type: DocumentationPortal
+    url: https://www.flowable.com/open-source/docs/
 common:
   - type: AgenticAccess
     url: agentic-access/flowable-api-agentic-access.yml
