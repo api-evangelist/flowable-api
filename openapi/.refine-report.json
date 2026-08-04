@@ -1,0 +1,24 @@
+{
+  "provider": "flowable-api",
+  "sources": [
+    "flowable-api-cmmn-api-openapi.yml",
+    "flowable-api-deployments-api-openapi.yml",
+    "flowable-api-models-api-openapi.yml",
+    "flowable-api-processdefinitions-api-openapi.yml",
+    "flowable-api-processinstances-api-openapi.yml",
+    "flowable-api-tasks-api-openapi.yml"
+  ],
+  "outputs": [
+    "flowable-api-cmmn-api-openapi.yml",
+    "flowable-api-deployments-api-openapi.yml",
+    "flowable-api-models-api-openapi.yml",
+    "flowable-api-processdefinitions-api-openapi.yml",
+    "flowable-api-processinstances-api-openapi.yml",
+    "flowable-api-tasks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
