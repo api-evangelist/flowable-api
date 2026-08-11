@@ -138,6 +138,13 @@ apis:
   - type: DocumentationPortal
     url: https://www.flowable.com/open-source/docs/
 common:
+  - type: IssueTracker
+    url: https://github.com/flowable/flowable-engine/issues
+  - type: Releases
+    url: https://github.com/flowable/flowable-engine/releases
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/flowable/flowable-engine/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/flowable-api-agentic-access.yml
   - type: TrustCenter
