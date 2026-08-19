@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST CMMN ProcessInstances API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProcessInstances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/process-instances"
+          },
+          "docs": "List process instances"
+        },
+        {
+          "info": {
+            "name": "Start a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/runtime/process-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a process instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

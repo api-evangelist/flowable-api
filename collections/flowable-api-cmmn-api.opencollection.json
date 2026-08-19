@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST CMMN API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CMMN",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List CMMN case instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances"
+          },
+          "docs": "List CMMN case instances"
+        },
+        {
+          "info": {
+            "name": "Start a CMMN case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a CMMN case instance"
+        },
+        {
+          "info": {
+            "name": "Delete a CMMN case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://flowable.example.com/flowable-rest/service/cmmn-runtime/case-instances/:caseInstanceId",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a CMMN case instance"
+        },
+        {
+          "info": {
+            "name": "List DMN decision tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://flowable.example.com/flowable-rest/service/dmn-repository/decision-tables"
+          },
+          "docs": "List DMN decision tables"
+        },
+        {
+          "info": {
+            "name": "Execute a DMN decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://flowable.example.com/flowable-rest/service/dmn-rule/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a DMN decision"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
