@@ -73,6 +73,8 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -101,6 +103,8 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
+  - Process Definitions
+  tags_raw:
   - ProcessDefinitions
   properties:
   - type: OpenAPI
@@ -115,6 +119,8 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
+  - Process Instances
+  tags_raw:
   - ProcessInstances
   properties:
   - type: OpenAPI
@@ -129,6 +135,8 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
