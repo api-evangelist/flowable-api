@@ -116,7 +116,7 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
-  - ProcessDefinitions
+  - Process Definitions
   tags_raw:
   - ProcessDefinitions
   properties:
@@ -132,7 +132,7 @@ apis:
   humanURL: https://www.flowable.com/open-source/docs/bpmn/ch04-API
   baseURL: https://www.flowable.com/open-source/docs/bpmn/
   tags:
-  - ProcessInstances
+  - Process Instances
   tags_raw:
   - ProcessInstances
   properties:
