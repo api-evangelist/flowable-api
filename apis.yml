@@ -36,7 +36,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/flowable-a
 access: 3rd-Party
 created: '2024-11-07'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 tags:
   - Automation
   - BPM
